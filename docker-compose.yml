@@ -11,15 +11,10 @@ services:
       - "5173:80"
     environment:
       - NODE_ENV=production
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.portfolio.rule=Host(`aidas.giize.com`)"
-      - "traefik.http.routers.portfolio.tls=true"
-      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
-      - "traefik.http.services.portfolio.loadbalancer.server.port=80"
     networks:
       - caddy_caddy_network
 
 networks:
   caddy_caddy_network:
     external: true
+ 
