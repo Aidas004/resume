@@ -36,8 +36,12 @@ jobs:
         run: |
           rsync -av --delete \
             --exclude 'node_modules/' \
+            --exclude 'dist/' \
+            --exclude 'logs/' \
+            --exclude 'trash/' \
             --exclude '.git/' \
             --exclude '.env.local' \
+            --exclude 'nginx.conf' \
             -e "ssh -i ~/.ssh/id_rsa" \
             . aidas@linux-namai.giize.com:/home/aidas/Documents/resume/
 
