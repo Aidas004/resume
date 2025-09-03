@@ -8,13 +8,21 @@ services:
     container_name: aidas-portfolio
     restart: always
     ports:
-      - "5173:80"
+      - "5173:5173"
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`aidas.giize.com`)"
+      - "traefik.http.routers.portfolio.tls=true"
+      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
+      - "traefik.http.services.portfolio.loadbalancer.server.port=5173"
     networks:
       - caddy_caddy_network
 
 networks:
   caddy_caddy_network:
     external: true
- 

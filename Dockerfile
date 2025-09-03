@@ -1,25 +1,20 @@
-# Build and Serve stage
+# Use the official Node.js 20 Alpine image as the base image
 FROM node:20-alpine
 
+# Set the working directory inside the container to /app
 WORKDIR /app
 
-# Copy package files
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies
+# Install the dependencies defined in package.json
 RUN npm install
 
-# Copy source code
+# Copy the rest of the application source code to the working directory
 COPY . .
 
-# Build the application
-RUN npm run build
+# Expose the port that the Vite dev server will run on
+EXPOSE 5173
 
-# Install serve globally
-RUN npm install -g serve
-
-# Expose port
-EXPOSE 80
-
-# Start the application using serve
-CMD ["serve", "-s", "dist", "-l", "80"]
+# Command to start the development server using npm
+CMD ["npm", "run", "dev"]
