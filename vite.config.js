@@ -9,7 +9,6 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: undefined,
@@ -19,12 +18,24 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5173,
+    allowedHosts: [
+      'bagociunas.lt',
+      'www.bagociunas.lt',
+      'aidas.giize.com',
+      'localhost'
+    ],
     watch: {
       usePolling: true
     }
   },
   preview: {
     port: 5173,
-    host: true
+    host: true,
+    allowedHosts: [
+      'bagociunas.lt',
+      'www.bagociunas.lt', 
+      'aidas.giize.com',
+      'localhost'
+    ]
   }
 })
