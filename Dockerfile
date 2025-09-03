@@ -29,11 +29,3 @@ EXPOSE 80
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]
-# List contents to verify copy
-RUN ls -la dist/
-
-# Expose port
-EXPOSE 5173
-
-# Start the application using serve with SPA configuration
-CMD ["serve", "-s", "dist", "-l", "5173", "--cors"]
