@@ -23,6 +23,3 @@ services:
 networks:
   caddy_caddy_network:
     external: true
-networks:
-  caddy_caddy_network:
-    external: true
